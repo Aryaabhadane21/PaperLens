@@ -1,5 +1,5 @@
 import React, { useState, useRef, DragEvent, ChangeEvent } from 'react';
-import { UploadCloud, Link as LinkIcon, FileText, X, AlertTriangle, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { UploadCloud, Link as LinkIcon, FileText, X, AlertTriangle, ArrowRight, Sparkles } from 'lucide-react';
 
 interface UploadStepProps {
   onStartAnalysis: (payload: { file?: File | null; url?: string | null }) => void;
@@ -87,7 +87,6 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onStartAnalysis, isLoadi
     }
   };
 
-  // Quick Preset Loader for instant testing
   const loadSamplePaper = async () => {
     setLocalError(null);
     try {
@@ -131,24 +130,24 @@ Several limitations must be noted: First, our parser assumes machine-readable te
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
-      {/* Cream Card Container */}
-      <div className="bg-cream-50 dark:bg-slate-900 border border-cream-200 dark:border-slate-800 rounded-2xl shadow-academic p-6 sm:p-8 transition-colors">
+    <div id="upload-section" className="w-full max-w-3xl mx-auto scroll-mt-28 mb-16">
+      {/* Sleek Frosted Glass Container */}
+      <div className="bg-[#090d1f]/90 backdrop-blur-2xl border border-indigo-900/50 rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.5)] p-6 sm:p-9 transition-all">
         {/* Tab Headers */}
-        <div className="flex border-b border-cream-200 dark:border-slate-800 mb-6">
+        <div className="flex border-b border-indigo-950/80 mb-7">
           <button
             type="button"
             onClick={() => {
               setActiveTab('file');
               setLocalError(null);
             }}
-            className={`flex items-center gap-2 pb-3 px-4 text-sm font-semibold border-b-2 transition-all ${
+            className={`flex items-center gap-2 pb-3.5 px-5 text-sm font-semibold border-b-2 transition-all ${
               activeTab === 'file'
-                ? 'border-navy-900 dark:border-gold-400 text-navy-900 dark:text-cream-50'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+                ? 'border-indigo-400 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            <UploadCloud className="w-4 h-4 text-gold-600 dark:text-gold-400" />
+            <UploadCloud className="w-4 h-4 text-indigo-400" />
             <span>Upload Document</span>
           </button>
 
@@ -158,23 +157,23 @@ Several limitations must be noted: First, our parser assumes machine-readable te
               setActiveTab('url');
               setLocalError(null);
             }}
-            className={`flex items-center gap-2 pb-3 px-4 text-sm font-semibold border-b-2 transition-all ${
+            className={`flex items-center gap-2 pb-3.5 px-5 text-sm font-semibold border-b-2 transition-all ${
               activeTab === 'url'
-                ? 'border-navy-900 dark:border-gold-400 text-navy-900 dark:text-cream-50'
-                : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+                ? 'border-indigo-400 text-white'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
-            <LinkIcon className="w-4 h-4 text-gold-600 dark:text-gold-400" />
+            <LinkIcon className="w-4 h-4 text-indigo-400" />
             <span>Paper URL</span>
           </button>
         </div>
 
         {/* Error Alert */}
         {(errorMessage || localError) && (
-          <div className="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200 flex items-start gap-3 text-sm">
-            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div className="mb-6 p-4 rounded-2xl bg-rose-950/40 border border-rose-800/60 text-rose-200 flex items-start gap-3 text-sm">
+            <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
             <div>
-              <p className="font-semibold">Analysis Notice</p>
+              <p className="font-semibold text-rose-100">Analysis Notice</p>
               <p className="mt-0.5 opacity-90">{errorMessage || localError}</p>
             </div>
           </div>
@@ -189,12 +188,12 @@ Several limitations must be noted: First, our parser assumes machine-readable te
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
-                className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200 ${
+                className={`relative border-2 border-dashed rounded-2xl p-9 text-center cursor-pointer transition-all duration-200 group ${
                   isDragging
-                    ? 'border-gold-500 bg-gold-500/10'
+                    ? 'border-indigo-400 bg-indigo-500/10'
                     : selectedFile
-                    ? 'border-navy-700 dark:border-gold-500/40 bg-white/70 dark:bg-slate-800/40'
-                    : 'border-slate-300 dark:border-slate-700 hover:border-gold-500/80 bg-white/50 dark:bg-slate-800/20'
+                    ? 'border-indigo-500/50 bg-[#0e1430]/70'
+                    : 'border-indigo-950 hover:border-indigo-500/60 bg-[#060814]/50'
                 }`}
               >
                 <input
@@ -207,11 +206,11 @@ Several limitations must be noted: First, our parser assumes machine-readable te
 
                 {selectedFile ? (
                   <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-2xl bg-navy-900 dark:bg-navy-800 text-gold-400 flex items-center justify-center mb-3 shadow-md border border-gold-500/20">
+                    <div className="w-14 h-14 rounded-2xl bg-indigo-600/20 text-indigo-300 flex items-center justify-center mb-3 shadow-md border border-indigo-500/30">
                       <FileText className="w-7 h-7" />
                     </div>
                     <div className="flex items-center gap-2 max-w-full">
-                      <span className="font-semibold text-slate-800 dark:text-slate-100 text-base truncate max-w-xs sm:max-w-md">
+                      <span className="font-semibold text-white text-base truncate max-w-xs sm:max-w-md">
                         {selectedFile.name}
                       </span>
                       <button
@@ -220,25 +219,25 @@ Several limitations must be noted: First, our parser assumes machine-readable te
                           e.stopPropagation();
                           setSelectedFile(null);
                         }}
-                        className="p-1 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500"
+                        className="p-1 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white"
                         title="Remove file"
                       >
                         <X className="w-4 h-4" />
                       </button>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    <span className="text-xs text-slate-400 mt-1">
                       {formatFileSize(selectedFile.size)} • Click or drop another to replace
                     </span>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 text-navy-900 dark:text-gold-400 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                    <div className="w-14 h-14 rounded-2xl bg-white text-slate-950 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform shadow-md">
                       <UploadCloud className="w-7 h-7" />
                     </div>
-                    <p className="text-base font-medium text-slate-800 dark:text-slate-200">
-                      <span className="text-gold-600 dark:text-gold-400 font-semibold underline underline-offset-4">Click to browse</span> or drag & drop paper
+                    <p className="text-base font-medium text-white">
+                      <span className="text-indigo-300 font-semibold underline underline-offset-4">Click to browse</span> or drag & drop paper
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    <p className="text-xs text-slate-400 mt-1.5">
                       Supports PDF, TXT, DOC, DOCX (up to 25MB)
                     </p>
                   </div>
@@ -247,13 +246,13 @@ Several limitations must be noted: First, our parser assumes machine-readable te
 
               {/* Sample paper quick action */}
               <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-                <span className="text-slate-500 dark:text-slate-400">Need a paper to test right now?</span>
+                <span className="text-slate-400">Need a paper to test right now?</span>
                 <button
                   type="button"
                   onClick={loadSamplePaper}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-navy-900 dark:text-gold-400 hover:border-gold-500 font-medium transition-colors shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0e1430] border border-indigo-900/60 text-indigo-300 hover:border-indigo-400/60 font-medium transition-colors shadow-sm"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-gold-500" />
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
                   <span>Load Sample Research Paper (Self-Grounded Transformer)</span>
                 </button>
               </div>
@@ -261,7 +260,7 @@ Several limitations must be noted: First, our parser assumes machine-readable te
           ) : (
             <div>
               {/* URL Input */}
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Academic Paper or Article URL
               </label>
               <div className="relative">
@@ -273,36 +272,36 @@ Several limitations must be noted: First, our parser assumes machine-readable te
                     setLocalError(null);
                   }}
                   placeholder="https://arxiv.org/abs/1706.03762 or web article URL"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent text-sm transition-all"
+                  className="w-full px-4 py-3.5 rounded-xl border border-indigo-950 bg-[#060814]/70 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition-all"
                 />
                 {urlInput && (
                   <button
                     type="button"
                     onClick={() => setUrlInput('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 )}
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+              <p className="text-xs text-slate-400 mt-2">
                 Protected with strict SSRF guard against loopbacks and cloud internal networks.
               </p>
 
               {/* Sample preset links */}
               <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
-                <span className="text-slate-500 dark:text-slate-400">Quick presets:</span>
+                <span className="text-slate-400">Quick presets:</span>
                 <button
                   type="button"
                   onClick={() => setUrlInput('https://arxiv.org/abs/1706.03762')}
-                  className="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-gold-500"
+                  className="px-3 py-1 rounded-md bg-[#0e1430] border border-indigo-900/60 text-slate-300 hover:border-indigo-400/60 transition-colors"
                 >
                   Attention Is All You Need (arXiv)
                 </button>
                 <button
                   type="button"
                   onClick={() => setUrlInput('https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)')}
-                  className="px-2.5 py-1 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-gold-500"
+                  className="px-3 py-1 rounded-md bg-[#0e1430] border border-indigo-900/60 text-slate-300 hover:border-indigo-400/60 transition-colors"
                 >
                   Transformer Architecture (Overview)
                 </button>
@@ -310,19 +309,19 @@ Several limitations must be noted: First, our parser assumes machine-readable te
             </div>
           )}
 
-          {/* Submit Button */}
+          {/* Submit Button (Matching Inspo Image 1 button style) */}
           <div className="mt-8">
             <button
               type="submit"
               disabled={isLoading || (activeTab === 'file' && !selectedFile) || (activeTab === 'url' && !urlInput.trim())}
-              className={`w-full py-3.5 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-lg transition-all duration-200 ${
+              className={`w-full py-4 px-6 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-200 ${
                 isLoading || (activeTab === 'file' && !selectedFile) || (activeTab === 'url' && !urlInput.trim())
-                  ? 'bg-slate-300 dark:bg-slate-800 text-slate-500 cursor-not-allowed shadow-none'
-                  : 'bg-navy-900 hover:bg-navy-800 dark:bg-gold-500 dark:hover:bg-gold-600 text-white dark:text-navy-950 shadow-navy-900/20 dark:shadow-gold-500/20 active:scale-[0.99]'
+                  ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-[#9bb0f4] via-[#abb9fa] to-[#bba7fc] text-slate-950 hover:opacity-95 shadow-[0_0_25px_rgba(157,177,245,0.35)] active:scale-[0.99]'
               }`}
             >
               <span>Analyze Paper & Verify Claims</span>
-              <ArrowRight className="w-4 h-4 text-gold-400 dark:text-navy-950" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </form>

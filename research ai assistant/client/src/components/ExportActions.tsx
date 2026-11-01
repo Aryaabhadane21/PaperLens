@@ -52,16 +52,16 @@ ${result.analysis.limitations.methodologicalLimitations.map((l) => `- ${l}`).joi
       <button
         type="button"
         onClick={handleCopyClipboard}
-        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-gold-500 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
+        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#0d1430] border border-indigo-900/60 text-slate-200 hover:border-indigo-400/60 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
       >
         {copied ? (
           <>
-            <Check className="w-4 h-4 text-emerald-500" />
-            <span className="text-emerald-600 dark:text-emerald-400">Copied to Clipboard!</span>
+            <Check className="w-4 h-4 text-emerald-400" />
+            <span className="text-emerald-400">Copied to Clipboard!</span>
           </>
         ) : (
           <>
-            <Copy className="w-4 h-4 text-gold-600 dark:text-gold-400" />
+            <Copy className="w-4 h-4 text-indigo-400" />
             <span>Copy Text</span>
           </>
         )}
@@ -71,9 +71,9 @@ ${result.analysis.limitations.methodologicalLimitations.map((l) => `- ${l}`).joi
       <a
         href={getExportUrl(result.id, 'markdown')}
         download
-        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-gold-500 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
+        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#0d1430] border border-indigo-900/60 text-slate-200 hover:border-indigo-400/60 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
       >
-        <FileText className="w-4 h-4 text-navy-800 dark:text-cream-100" />
+        <FileText className="w-4 h-4 text-indigo-300" />
         <span>Markdown (.md)</span>
       </a>
 
@@ -81,9 +81,9 @@ ${result.analysis.limitations.methodologicalLimitations.map((l) => `- ${l}`).joi
       <a
         href={getExportUrl(result.id, 'word')}
         download
-        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-blue-500 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
+        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#0d1430] border border-indigo-900/60 text-slate-200 hover:border-indigo-400/60 flex items-center gap-1.5 shadow-sm transition-all active:scale-95"
       >
-        <Download className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+        <Download className="w-4 h-4 text-blue-400" />
         <span>Word (.docx)</span>
       </a>
 
@@ -91,9 +91,9 @@ ${result.analysis.limitations.methodologicalLimitations.map((l) => `- ${l}`).joi
       <a
         href={getExportUrl(result.id, 'pdf')}
         download
-        className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-navy-900 hover:bg-navy-800 dark:bg-gold-500 dark:hover:bg-gold-600 text-white dark:text-navy-950 flex items-center gap-1.5 shadow-md shadow-navy-900/20 dark:shadow-gold-500/20 transition-all active:scale-95"
+        className="px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#9bb0f4] to-[#bba7fc] text-slate-950 flex items-center gap-1.5 shadow-[0_0_15px_rgba(157,177,245,0.3)] hover:opacity-95 transition-all active:scale-95"
       >
-        <Download className="w-4 h-4 text-gold-400 dark:text-navy-950" />
+        <Download className="w-4 h-4 text-slate-950" />
         <span>Download PDF</span>
       </a>
     </div>

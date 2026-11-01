@@ -26,35 +26,35 @@ export const StepperWizard: React.FC<StepperWizardProps> = ({ currentStep }) => 
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-8">
+    <div className="w-full max-w-2xl mx-auto mb-10">
       <div className="flex items-center justify-between relative">
         {/* Connecting line */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-0.5 bg-slate-200 dark:bg-slate-800 -z-10" />
+        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-0.5 bg-indigo-950/80 -z-10" />
 
         {steps.map((step) => {
           const status = getStepStatus(step.id as WizardStep);
           const Icon = step.icon;
 
           return (
-            <div key={step.id} className="flex flex-col items-center bg-white dark:bg-navy-950 px-3 py-1 rounded-full z-10">
+            <div key={step.id} className="flex flex-col items-center bg-[#060814] px-4 py-1 rounded-full z-10">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 shadow-sm ${
+                className={`w-11 h-11 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${
                   status === 'completed'
-                    ? 'bg-navy-900 dark:bg-navy-800 text-gold-400 border-2 border-gold-500'
+                    ? 'bg-indigo-950 text-indigo-300 border-2 border-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.3)]'
                     : status === 'active'
-                    ? 'bg-gold-500 text-white shadow-gold-500/20 ring-4 ring-gold-500/20'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 border border-slate-200 dark:border-slate-700'
+                    ? 'bg-gradient-to-r from-[#9bb0f4] to-[#bba7fc] text-slate-950 shadow-[0_0_20px_rgba(157,177,245,0.4)] ring-4 ring-indigo-500/20'
+                    : 'bg-[#0d1229] text-slate-500 border border-indigo-950'
                 }`}
               >
                 <Icon className="w-4 h-4" />
               </div>
               <span
-                className={`text-xs mt-1.5 font-medium transition-colors ${
+                className={`text-xs mt-2 font-medium transition-colors ${
                   status === 'active'
-                    ? 'text-navy-900 dark:text-cream-50 font-semibold'
+                    ? 'text-white font-semibold'
                     : status === 'completed'
-                    ? 'text-gold-700 dark:text-gold-400'
-                    : 'text-slate-400 dark:text-slate-500'
+                    ? 'text-indigo-300'
+                    : 'text-slate-500'
                 }`}
               >
                 {step.label}

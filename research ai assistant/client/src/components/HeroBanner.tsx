@@ -1,63 +1,62 @@
 import React from 'react';
-import { ShieldCheck, FileCheck, Layers, Cpu } from 'lucide-react';
+import { Sparkles, Play } from 'lucide-react';
 
-export const HeroBanner: React.FC = () => {
+interface HeroBannerProps {
+  onLoadSample: () => void;
+  onGetStarted: () => void;
+}
+
+export const HeroBanner: React.FC<HeroBannerProps> = ({ onLoadSample, onGetStarted }) => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-850 text-white pt-10 pb-12 px-4 sm:px-6 rounded-3xl shadow-xl border border-navy-800/80 mb-8">
-      {/* Subtle Background pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+    <section id="home" className="relative pt-12 pb-20 overflow-hidden text-center">
+      {/* Central Aurora / Nebula Glow Effect from Inspo Image 1 */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[450px] sm:h-[550px] pointer-events-none -z-10"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(165, 180, 252, 0.28) 0%, rgba(99, 102, 241, 0.22) 35%, rgba(45, 212, 191, 0.12) 65%, transparent 75%)',
+          filter: 'blur(70px)',
+        }}
+      />
 
-      <div className="relative max-w-4xl mx-auto text-center">
-        {/* Badges */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-800/80 border border-gold-500/30 text-gold-400 text-xs font-medium tracking-wide uppercase mb-4 shadow-sm">
-          <ShieldCheck className="w-3.5 h-3.5 text-gold-400" />
-          <span>Factual Grounding & Anti-Hallucination Pipeline</span>
+      <div className="max-w-4xl mx-auto px-4 relative">
+        {/* Powered by AI ✦ Badge */}
+        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-indigo-400/25 text-indigo-300 text-xs font-medium tracking-wide mb-6 shadow-[0_0_20px_rgba(99,102,241,0.2)]">
+          <span>Powered by AI</span>
+          <Sparkles className="w-3.5 h-3.5 text-indigo-400 fill-indigo-400" />
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-cream-50 leading-tight mb-4">
-          Deconstruct Research Papers into <span className="text-gold-400 underline decoration-gold-600/40 underline-offset-8">Grounded Insights</span>
+        {/* Hero Title */}
+        <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.15] mb-6">
+          Understand Complex Research <br className="hidden sm:inline" />
+          <span className="text-white">in Seconds</span>
         </h1>
 
-        <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-light leading-relaxed">
-          Upload any academic paper as <span className="text-cream-100 font-medium">PDF, DOCX, TXT</span> or paste a URL. 
-          Extract Problem, Objectives, Methodology, Findings & Limitations—with every assertion verified against source text.
+        {/* Hero Subtitle */}
+        <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+          PaperLens AI summarizes academic papers, highlights key insights, and helps you
+          stay ahead—without reading every word.
         </p>
 
-        {/* Highlight pill cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left">
-          <div className="p-3 rounded-xl bg-navy-850/60 border border-navy-700/60 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
-              <FileCheck className="w-4 h-4" />
-              <span>Multi-Format</span>
-            </div>
-            <p className="text-xs text-slate-300">PDF, TXT, Word (.doc/x), & URL Readability</p>
-          </div>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={onLoadSample}
+            className="px-7 py-3 rounded-full text-sm font-medium text-slate-200 bg-[#0e142b]/90 hover:bg-[#161f42] border border-indigo-900/60 hover:border-indigo-400/50 transition-all flex items-center gap-2 shadow-sm"
+          >
+            <Play className="w-3.5 h-3.5 fill-slate-300" />
+            <span>Watch Demo Paper</span>
+          </button>
 
-          <div className="p-3 rounded-xl bg-navy-850/60 border border-navy-700/60 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
-              <Layers className="w-4 h-4" />
-              <span>5 Core Pillars</span>
-            </div>
-            <p className="text-xs text-slate-300">Problem, Objectives, Method, Results, Limits</p>
-          </div>
-
-          <div className="p-3 rounded-xl bg-navy-850/60 border border-navy-700/60 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Claim Audit</span>
-            </div>
-            <p className="text-xs text-slate-300">Dual-pass cross-checking with source quotes</p>
-          </div>
-
-          <div className="p-3 rounded-xl bg-navy-850/60 border border-navy-700/60 backdrop-blur-sm">
-            <div className="flex items-center gap-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
-              <Cpu className="w-4 h-4" />
-              <span>Full Export</span>
-            </div>
-            <p className="text-xs text-slate-300">One-click PDF, Word, Markdown, or Copy</p>
-          </div>
+          <button
+            type="button"
+            onClick={onGetStarted}
+            className="px-8 py-3 rounded-full text-sm font-semibold text-slate-950 bg-gradient-to-r from-[#9db1f5] via-[#aab9fa] to-[#bba6fc] hover:opacity-95 shadow-[0_0_25px_rgba(157,177,245,0.4)] transition-all active:scale-[0.98]"
+          >
+            Get Started
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

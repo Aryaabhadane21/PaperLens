@@ -3,23 +3,50 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #060814;
+    color: #e2e8f0;
   }
 }
 
-/* Custom scrollbars for paper text */
+/* Custom text stroke for hollow numbered cards in How it Works */
+.text-stroke-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+}
+
+.text-stroke-glow {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(165, 180, 252, 0.45);
+}
+
+/* Custom glowing effects */
+.glow-hub-center {
+  box-shadow: 0 0 60px 10px rgba(99, 102, 241, 0.25), inset 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.glow-card {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #060814;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
+  background: rgba(99, 102, 241, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.6);
+  background: rgba(99, 102, 241, 0.5);
 }
